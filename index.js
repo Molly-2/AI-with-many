@@ -41,7 +41,7 @@ function saveMemory() {
 
 // Detect if the prompt is related to images
 function isImageRelated(prompt) {
-    const keywords = ['image', 'images', 'picture', 'pictures', 'photo', 'photos'];
+    const keywords = ['image', 'images', 'picture', 'pictures', 'photo', 'photos', 'pic', 'pics'];
     return keywords.some(keyword => prompt.includes(keyword));
 }
 
@@ -133,7 +133,7 @@ app.get('/ai', async (req, res) => {
         if (isImageRelated(userPrompt)) {
             const query = userPrompt;
             try {
-                const apiUrl = `https://pinterest-dev.onrender.com/pinterest?query=${encodeURIComponent(query)}`;
+                const apiUrl = `https://pinterest-devh.onrender.com/pinterest?query=${encodeURIComponent(query)}`;
                 const resApi = await axios.get(apiUrl);
                 const imageUrls = resApi.data.data.slice(0, 10); // Limit to 10 images
 
